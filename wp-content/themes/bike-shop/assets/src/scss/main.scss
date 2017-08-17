@@ -1,1 +1,7 @@
-@import 'layouts/home.scss';
+@import "normalize";
+@import "common";
+@import "layouts/header";
+@import "parts/main-menu";
+@import "layouts/home";
+@import "parts/tabs";
+@import "layouts/single-product";

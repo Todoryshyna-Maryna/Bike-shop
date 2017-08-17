@@ -2,31 +2,31 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the "site-content" div and all content after.
+ * Contains the closing of the #content div and all content after.
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bike-shop
  */
+
 ?>
 
-	</div><!-- .site-content -->
+	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="site-footer">
 		<div class="site-info">
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bike-shop' ) ); ?>"><?php
+				/* translators: %s: CMS name, i.e. WordPress. */
+				printf( esc_html__( 'Proudly powered by %s', 'bike-shop' ), 'WordPress' );
+			?></a>
+			<span class="sep"> | </span>
 			<?php
-				/**
-				 * Fires before the Twenty Fifteen footer text for footer customization.
-				 *
-				 * @since Twenty Fifteen 1.0
-				 */
-				do_action( 'twentyfifteen_credits' );
+				/* translators: 1: Theme name, 2: Theme author. */
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'bike-shop' ), 'bike-shop', '<a href="http://underscores.me/">Underscores.me</a>' );
 			?>
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyfifteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfifteen' ), 'WordPress' ); ?></a>
 		</div><!-- .site-info -->
-	</footer><!-- .site-footer -->
-
-</div><!-- .site -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
 

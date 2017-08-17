@@ -1,0 +1,63 @@
+.menu-shop-page-menu-container {
+  ul>li {
+    display: inline-block;
+    text-transform: uppercase;
+    a {
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+    &:nth-child(2) {
+      margin: 0 50px;
+    }
+  }
+}
+.wc-menu-cart {
+  margin-left: 365px;
+  color: #FFFFFF;
+  font-size: 18px;
+}
+
+.main-navigation {
+  margin-left: 320px;
+  display: inline-flex;
+  padding: 20px 0;
+  button {
+    display: none;
+  }
+}
+
+.navigation-top {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.menu-scroll-down {
+  display: none;
+}
+
+.bikeshop-logo {
+  display: inline-flex;
+}
+
+.header-text {
+  .site-title {
+    margin-top: 121px;
+    text-align: center;
+    max-width: 847px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    a {
+      font-size: 72px;
+    }
+  }
+  .description {
+    text-align: center;
+    font-size: 28px;
+    color: #c2c1c1;
+    margin-top: 20px;
+  }
+}

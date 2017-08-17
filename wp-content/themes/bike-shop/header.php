@@ -1,52 +1,71 @@
 <?php
 /**
- * The template for displaying the header
+ * The header for our theme
  *
- * Displays all of the head element and everything up until the "site-content" div.
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bike-shop
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+
+?>
+<!doctype html>
+<html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!--[if lt IE 9]>
-	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
-	<![endif]-->
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
+<div id="page" class="site">
 
-	<div id="sidebar" class="sidebar">
-		<header id="masthead" class="site-header" role="banner">
-			<div class="site-branding">
-				<?php
-					twentyfifteen_the_custom_logo();
+    <header id="masthead" class="site-header">
+	    <?php get_template_part( 'template-parts/header/header', 'image' ); ?>
+        <div class="m-container">
 
-					if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif;
+            <div class="navigation-top">
+                <div class="wrap">
+                    <div class="bikeshop-logo"><?php the_custom_logo(); ?></div>
 
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo $description; ?></p>
-					<?php endif;
-				?>
-				<button class="secondary-toggle"><?php _e( 'Menu and widgets', 'twentyfifteen' ); ?></button>
-			</div><!-- .site-branding -->
-		</header><!-- .site-header -->
+                    <nav id="site-navigation" class="main-navigation">
+                        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'bike-shop' ); ?></button>
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+						) );
+						?>
+	                    <?php global $woocommerce; ?>
+                        <a class="wc-menu-cart" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"
+                           title="<?php _e('Cart View', 'bike-shop'); ?>">
+		                    <?php echo sprintf(_n('BASKET (%d)', 'BASKET (%d)', $woocommerce->cart->cart_contents_count, 'bike-shop'),
+			                    $woocommerce->cart->cart_contents_count);?>
+<!--		                    --><?php //echo $woocommerce->cart->get_cart_total(); ?>
+                        </a>
 
-		<?php get_sidebar(); ?>
-	</div><!-- .sidebar -->
+                    </nav><!-- #site-navigation -->
 
-	<div id="content" class="site-content">
+                </div><!-- .wrap -->
+                <div class="header-text">
+
+                    <h1 class="site-title">
+                        <a href="<?php echo get_option( 'home' ); ?>">
+							<?php bloginfo( 'name' ); ?></a>
+                    </h1>
+                    <div class="description">
+						<?php bloginfo( 'description' ); ?>
+                    </div>
+
+                </div>
+            </div><!-- .navigation-top -->
+
+        </div><!-- .site-branding -->
+
+
+    </header><!-- #masthead -->
+
+    <div id="content" class="site-content">
